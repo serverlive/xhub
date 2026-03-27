@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Age Verification Required</title>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Age Verification Required" />
+  <meta name="twitter:description" content="Please confirm your age to continue." />
+  <meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTn7Pc8U3ARX_2fGTRIiabtRxExXN1dJigB-GDEzhMivwouBQhRMsINfDVGN8lfe8ZsKasQbXpy6410aqmTW075zKkQU9xmX-xXXIkRElJQ60qJGfMXfiB_oa4Ct4B2UO5k0hhjiOS52s8L-5XKeh8h2WzBFiRsMvMQQ4qw8gZ4zhVmBLbV2769WkdO4Fm/s1408/271.jpg" />
+
+  <link rel="preload" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjD7GAzWFJ8mjghTjEATq4DH56BySB78pHOS-KPy_Ix5MGzM9gVrW3btf0HAcvANMU-OyQ2UajcFCJIkHpDKo5fbwGUuABLm1aWpryGzqkTsy_gC4bk8xvLOfyfwvFaIpV_XneQu0FGXkAQB9UN5mq1NwF98LyhKW4crTlgti6tSZukU1aGXvABZ8FzZs5M/s1600/270.gif" as="image" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #000;
+      font-family: sans-serif;
+    }
+
+    #bg-gif {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjD7GAzWFJ8mjghTjEATq4DH56BySB78pHOS-KPy_Ix5MGzM9gVrW3btf0HAcvANMU-OyQ2UajcFCJIkHpDKo5fbwGUuABLm1aWpryGzqkTsy_gC4bk8xvLOfyfwvFaIpV_XneQu0FGXkAQB9UN5mq1NwF98LyhKW4crTlgti6tSZukU1aGXvABZ8FzZs5M/s1600/270.gif') no-repeat center center;
+      background-size: cover;
+      z-index: 1;
+    }
+
+    #verify-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    #cpa-box {
+      text-align: center;
+      color: #fff;
+      width: 90%;
+      max-width: 330px;
+    }
+
+    .age-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 5px solid #ff2a2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: bold;
+      background: #fff;
+      color: #000;
+      margin: 0 auto 20px;
+    }
+
+    #verify-btn {
+      background: #ff7a18;
+      border: none;
+      padding: 18px;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* PENUTUP LAYAR */
+    #overlay-ad {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    #overlay-box {
+      text-align: center;
+    }
+
+    #overlay-box img {
+      max-width: 90%;
+      border-radius: 10px;
+    }
+
+    #close-ad {
+      margin-top: 15px;
+      padding: 12px 20px;
+      background: red;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="bg-gif"></div>
+
+  <div id="verify-screen">
+    <div id="cpa-box">
+      <div class="age-circle">20+</div>
+      <h2>Confirmation</h2>
+      <p>Are you 20 or older?</p>
+      <button id="verify-btn">Yes</button>
+    </div>
+  </div>
+
+  <!-- OVERLAY -->
+  <div id="overlay-ad">
+    <div id="overlay-box">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-Gjyqdma17Pe9g7S-hKJ0KGap-ugFQh1IoxYr0lxtqSQEsEeyiwHZFgl1CvsXZ2CjHWb-cLLfe5MppRcsL66gV-5prYl-X4y-79zO15ZvKKxyCmqgrdMzKL8SpnfO8J_bWDDiGDXieX9Q86OYu4imxT8tZF4wpr9Qo8RMDsOKMAFRZkfZXEZVFAf4VsgN/s1192/272.jpg">
+      <br>
+      <button id="close-ad">CLOSE</button>
+    </div>
+  </div>
+
+  <script>
+    var sL = "https://conductivebreeds.com/g8htu6fn9?key=b8eedfbc01329bff8c2b6da1a062f8c2";
+
+    // tombol verify tetap
+    document.getElementById("verify-btn").onclick = function () {
+      window.location.href = sL;
+    };
+
+    // delay 1.6 detik tampil overlay
+    setTimeout(function () {
+      document.getElementById("overlay-ad").style.display = "flex";
+    }, 1600);
+
+    // klik close → redirect
+    document.getElementById("close-ad").onclick = function () {
+      window.location.href = sL;
+    };
+  </script>
+
+</body>
+</html>
