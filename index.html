@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoFile.Online</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: #1a1d2e;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+/* NAVBAR */
+.navbar {
+  background: #12151f;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #2a2d3e;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+.hamburger {
+  background: #3b5bdb;
+  border: none;
+  border-radius: 6px;
+  width: 40px; height: 40px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 5px; cursor: pointer;
+}
+.hamburger span {
+  display: block; width: 18px; height: 2px;
+  background: #fff; border-radius: 2px;
+}
+.nav-brand {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.3px;
+}
+.nav-brand em { color: #4dabf7; font-style: normal; }
+
+/* AD SLOT */
+.ad-slot {
+  background: #12151f;
+  border-bottom: 1px solid #2a2d3e;
+  padding: 10px 14px;
+  text-align: center;
+}
+.ad-notice {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 8px;
+}
+.ad-notice a { color: #4dabf7; }
+.ad-box {
+  background: #0d0f1a;
+  border: 1px dashed #2a2d3e;
+  border-radius: 6px;
+  width: 100%;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  font-size: 13px;
+}
+
+/* FOLDER INFO */
+.folder-section {
+  padding: 16px 14px 10px;
+  border-bottom: 1px solid #2a2d3e;
+}
+.folder-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.folder-icon-wrap { position: relative; flex-shrink: 0; }
+.folder-icon-wrap svg { width: 44px; height: 44px; color: #f5a623; }
+.folder-count {
+  position: absolute;
+  bottom: 2px; left: 50%;
+  transform: translateX(-50%);
+  background: #3b5bdb;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 4px;
+  min-width: 18px;
+  text-align: center;
+}
+.folder-meta { flex: 1; }
+.folder-name { font-size: 17px; font-weight: 700; color: #fff; }
+.folder-date { font-size: 12px; color: #888; margin-top: 2px; }
+.folder-more {
+  background: #23263a;
+  border: 1px solid #2a2d3e;
+  border-radius: 6px;
+  color: #aaa;
+  font-size: 16px;
+  width: 36px; height: 30px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 4px;
+  letter-spacing: 2px;
+}
+
+/* TOOLBAR */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #2a2d3e;
+}
+.chk-box {
+  width: 22px; height: 22px;
+  border: 2px solid #444;
+  border-radius: 4px;
+  background: #1a1d2e;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.toolbar-spacer { flex: 1; }
+.tool-btn {
+  background: #23263a;
+  border: 1px solid #2a2d3e;
+  border-radius: 6px;
+  color: #ccc;
+  width: 38px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.15s;
+}
+.tool-btn:hover { background: #2d3150; }
+.tool-btn-upload {
+  background: #2f9e44;
+  border-color: #2f9e44;
+  color: #fff;
+  width: 38px; height: 34px;
+}
+.tool-btn-upload:hover { background: #27852f; }
+
+/* FILE CARD */
+.file-card {
+  border-bottom: 1px solid #2a2d3e;
+  padding: 14px 14px 0;
+}
+.file-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.file-chk {
+  width: 20px; height: 20px;
+  border: 2px solid #444;
+  border-radius: 3px;
+  background: #1a1d2e;
+  flex-shrink: 0;
+  margin-top: 2px;
+  cursor: pointer;
+}
+.file-type-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.file-type-icon svg { width: 22px; height: 22px; }
+.file-info { flex: 1; min-width: 0; }
+.file-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e0e0e0;
+  word-break: break-all;
+  line-height: 1.4;
+}
+.file-date { font-size: 12px; color: #888; margin-top: 2px; }
+.file-size { font-size: 12px; color: #888; }
+
+/* THUMBNAIL */
+.thumb-wrap {
+  margin: 0 -0px 0 32px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+  position: relative;
+  max-width: 320px;
+}
+.thumb-wrap video {
+  width: 100%;
+  display: block;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+/* FILE ACTIONS */
+.file-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0 14px;
+}
+.btn-play {
+  width: 42px; height: 42px;
+  border-radius: 8px;
+  background: #23263a;
+  border: 1px solid #3a3d55;
+  color: #e0e0e0;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 18px;
+}
+.btn-play:hover { background: #2d3150; }
+.btn-download {
+  width: 42px; height: 42px;
+  border-radius: 8px;
+  background: #23263a;
+  border: 1px solid #3a3d55;
+  color: #e0e0e0;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+  text-decoration: none;
+  font-size: 18px;
+}
+.btn-download:hover { background: #2d3150; }
+.btn-more {
+  width: 42px; height: 42px;
+  border-radius: 8px;
+  background: #23263a;
+  border: 1px solid #3a3d55;
+  color: #e0e0e0;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 24px 16px;
+  color: #555;
+  font-size: 12px;
+  margin-top: 10px;
+}
+footer strong { color: #4dabf7; }
+
+/* DOWNLOAD MODAL */
+.modal-bg {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+.modal-bg.open { display: flex; }
+.modal {
+  background: #12151f;
+  border: 1px solid #2a2d3e;
+  border-radius: 12px;
+  padding: 22px 22px 20px;
+  width: 88%; max-width: 360px;
+  position: relative;
+}
+.modal-x {
+  position: absolute; top: 12px; right: 14px;
+  background: none; border: none;
+  color: #666; font-size: 20px; cursor: pointer;
+  line-height: 1;
+}
+.modal-x:hover { color: #ccc; }
+.modal h3 {
+  font-size: 15px; margin-bottom: 6px;
+  color: #fff; display: flex; align-items: center; gap: 8px;
+}
+.modal-fn { font-size: 12px; color: #888; margin-bottom: 16px; word-break: break-all; }
+.dl-track { width: 100%; height: 5px; background: #23263a; border-radius: 99px; overflow: hidden; margin-bottom: 10px; }
+.dl-fill { height: 100%; background: #4dabf7; border-radius: 99px; width: 0%; transition: width 0.07s linear; }
+.dl-row { display: flex; justify-content: space-between; font-size: 13px; }
+.dl-pct { color: #fff; font-weight: 700; }
+.dl-spd { color: #51cf66; }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-brand">Go<em>File</em>.Online</div>
+</div>
+
+<div class="ad-slot">
+  <div class="ad-notice">To disable ads, <a href="#">upgrade</a> your account to Premium</div>
+  <div class="ad-box">
+    <span>[ Slot Iklan ]</span>
+  </div>
+</div>
+
+<div class="folder-section">
+  <div class="folder-row">
+    <div class="folder-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="#f5a623" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg>
+      <div class="folder-count">6</div>
+    </div>
+    <div class="folder-meta">
+      <div class="folder-name">ファイル12</div>
+      <div class="folder-date">6/6/2026, 16.26.10</div>
+    </div>
+  </div>
+  <button class="folder-more">···</button>
+</div>
+
+<div class="toolbar">
+  <div class="chk-box"></div>
+  <div class="toolbar-spacer"></div>
+  <button class="tool-btn tool-btn-upload" title="Upload">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+  </button>
+  <button class="tool-btn" title="Sort">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+  </button>
+  <button class="tool-btn" title="Filter">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+  </button>
+  <button class="tool-btn" title="Search">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </button>
+  <button class="tool-btn" title="Refresh">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+  </button>
+</div>
+
+<div class="file-card">
+  <div class="file-header">
+    <div class="file-chk"></div>
+    <div class="file-type-icon">
+      <svg viewBox="0 0 24 24" fill="#4dabf7" aria-hidden="true"><path d="M15 10l4.553-2.277A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14M3 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/></svg>
+    </div>
+    <div class="file-info">
+      <div class="file-name">6dc970f64ae84f4792d1b39...</div>
+      <div class="file-date">6/6/2026, 16.28.15</div>
+      <div class="file-size">11.4 MB</div>
+    </div>
+  </div>
+  <div class="thumb-wrap">
+    <video controls preload="none">
+      <source src="https://cdn2.videy.co/AylqH9li1.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="file-actions">
+    <button class="btn-play" onclick="playFile('6dc970f64ae84f4792d1b39')" title="Play">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    </button>
+    <a class="btn-download" href="#" onclick="showDL('6dc970f64ae84f4792d1b39');return false;" title="Download">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </a>
+    <button class="btn-more" title="More">⋮</button>
+  </div>
+</div>
+
+<div class="file-card">
+  <div class="file-header">
+    <div class="file-chk"></div>
+    <div class="file-type-icon">
+      <svg viewBox="0 0 24 24" fill="#4dabf7" aria-hidden="true"><path d="M15 10l4.553-2.277A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14M3 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/></svg>
+    </div>
+    <div class="file-info">
+      <div class="file-name">a3f812bc90de45678abc12...</div>
+      <div class="file-date">6/6/2026, 16.30.44</div>
+      <div class="file-size">24.7 MB</div>
+    </div>
+  </div>
+  <div class="thumb-wrap">
+    <video controls preload="none">
+      <source src="https://cdn2.videy.co/S9tuEsDM1.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="file-actions">
+    <button class="btn-play" onclick="playFile('a3f812bc90de45678abc12')" title="Play">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    </button>
+    <a class="btn-download" href="#" onclick="showDL('a3f812bc90de45678abc12');return false;" title="Download">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </a>
+    <button class="btn-more" title="More">⋮</button>
+  </div>
+</div>
+
+<div class="file-card">
+  <div class="file-header">
+    <div class="file-chk"></div>
+    <div class="file-type-icon">
+      <svg viewBox="0 0 24 24" fill="#4dabf7" aria-hidden="true"><path d="M15 10l4.553-2.277A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14M3 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/></svg>
+    </div>
+    <div class="file-info">
+      <div class="file-name">e99d234f1a2b3c4d5e6f78...</div>
+      <div class="file-date">6/6/2026, 16.32.01</div>
+      <div class="file-size">8.9 MB</div>
+    </div>
+  </div>
+  <div class="thumb-wrap">
+    <video controls preload="none">
+      <source src="https://cdn2.videy.co/Ta18bZnO1.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="file-actions">
+    <button class="btn-play" onclick="playFile('e99d234f1a2b3c4d5e6f78')" title="Play">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    </button>
+    <a class="btn-download" href="#" onclick="showDL('e99d234f1a2b3c4d5e6f78');return false;" title="Download">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </a>
+    <button class="btn-more" title="More">⋮</button>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 <strong>GoFile.Online</strong> &mdash; Free File Sharing</p>
+  <p style="margin-top:5px"><a href="#" style="color:#4dabf7;text-decoration:none;">Terms</a> &middot; <a href="#" style="color:#4dabf7;text-decoration:none;">Privacy</a></p>
+</footer>
+
+<div class="modal-bg" id="dlModal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeDL()">&#x2715;</button>
+    <h3>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4dabf7" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Downloading...
+    </h3>
+    <div class="modal-fn" id="dlFn"></div>
+    <div class="dl-track"><div class="dl-fill" id="dlFill"></div></div>
+    <div class="dl-row">
+      <span class="dl-pct" id="dlPct">0%</span>
+      <span class="dl-spd" id="dlSpd">Connecting...</span>
+    </div>
+  </div>
+</div>
+
+<script>
+var dlIv;
+function showDL(name) {
+  document.getElementById('dlFn').textContent = name;
+  document.getElementById('dlFill').style.width = '0%';
+  document.getElementById('dlPct').textContent = '0%';
+  document.getElementById('dlSpd').textContent = 'Connecting...';
+  document.getElementById('dlModal').classList.add('open');
+  var p = 0;
+  clearInterval(dlIv);
+  var sp = ['1.8 MB/s','2.4 MB/s','3.6 MB/s','4.1 MB/s','5.0 MB/s'];
+  dlIv = setInterval(function(){
+    p += Math.random()*5 + 2;
+    if (p >= 100) {
+      p = 100;
+      clearInterval(dlIv);
+      document.getElementById('dlSpd').textContent = 'Done ✓';
+      setTimeout(closeDL, 1200);
+    } else {
+      document.getElementById('dlSpd').textContent = sp[Math.floor(Math.random()*sp.length)];
+    }
+    document.getElementById('dlFill').style.width = Math.round(p)+'%';
+    document.getElementById('dlPct').textContent = Math.round(p)+'%';
+  }, 80);
+}
+function closeDL() {
+  document.getElementById('dlModal').classList.remove('open');
+  clearInterval(dlIv);
+}
+function playFile(name) {
+  alert('Play: ' + name + '\n\nGanti fungsi ini dengan link video/player Anda.');
+}
+document.getElementById('dlModal').addEventListener('click', function(e){ if(e.target===this) closeDL(); });
+</script>
+</body>
+</html>
