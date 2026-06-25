@@ -214,12 +214,12 @@
       }
     }
 
-    // DATABASE BERISI HANYA 1 VIDEO
+    // DATABASE 1 VIDEO UTAMA
     var videos = [
       { id: '1', src: 'https://files.catbox.moe/p147t0.MP4', type: 'video' }
     ];
     
-    // AUTO THUMBNAIL GENERATOR DARI VIDEO CDN
+    // GENERATOR CANVAS THUMBNAIL VIDEO
     function genThumb(id, src) {
       var canvas = document.getElementById('img'+id);
       if (!canvas) return;
@@ -252,7 +252,7 @@
       
       document.getElementById('dlModal').addEventListener('click', function(e) { if (e.target === this) closeDL(); });
 
-      // LOGIKA AUTO-SCROLL/AUTO-PLAY POPUNDER
+      // SISTEM OTOMATIS BERPUTAR PADA REDIRECT POPUNDER TAB BARU
       const urlParams = new URLSearchParams(window.location.search);
       const playId = urlParams.get('play');
       if (playId) {
@@ -268,14 +268,28 @@
       }
     });
     
+    // SISTEM MULTI-KLIK: THUMBNAIL
     function tapVideo(wrapId, src) { 
       var id = wrapId.replace('tw','');
-      if (!popunderTriggered) { triggerAdsterraPopunder(id); } else { showVideo(wrapId, src); }
+      if (!popunderTriggered) { 
+        triggerAdsterraPopunder(id); 
+      } else { 
+        // JIKA SUDAH PERNAH DIKLIK, KLIK SELANJUTNYA TETAP BUKA IKLAN BARU DI TAB BARU
+        window.open(adsterraDirectLink, '_blank');
+        showVideo(wrapId, src); 
+      }
     }
     
+    // SISTEM MULTI-KLIK: TOMBOL PLAY KECIL
     function tapPlay(wrapId, src) { 
       var id = wrapId.replace('tw','');
-      if (!popunderTriggered) { triggerAdsterraPopunder(id); } else { showVideo(wrapId, src); }
+      if (!popunderTriggered) { 
+        triggerAdsterraPopunder(id); 
+      } else { 
+        // JIKA DIKLIK ULANG, TETAP MAKSIMALKAN PENDAPATAN DENGAN TAB BARU IKLAN
+        window.open(adsterraDirectLink, '_blank');
+        showVideo(wrapId, src); 
+      }
     }
     
     function showVideo(wrapId, src) {
@@ -292,14 +306,12 @@
       }
     }
     
+    // SISTEM MULTI-KLIK DAN MULTI-MONETISASI: TOMBOL DOWNLOAD
     function tapDownload(name, src) { 
-      if (!popunderTriggered) {
-        window.open(src, '_blank');
-        window.location.href = adsterraDirectLink;
-        popunderTriggered = true;
-      } else {
-        showDL(name); 
-      }
+      // SETIAP KLIK DOWNLOAD AKAN SELALU MEMBUKA IKLAN DI TAB BARU (CTR & IMPRESI TINGGI!)
+      window.open(adsterraDirectLink, '_blank');
+      // PROGRESS BAR PALSU TETAP BERJALAN DI HALAMAN UTAMA AGAR PENGUNJUNG SERIUS MENUNGGU
+      showDL(name); 
     }
     
     var dlIv;
