@@ -13,12 +13,13 @@
     .nav-brand { font-size:17px; font-weight:700; color:#fff; }
     .nav-brand em { color:#4dabf7; font-style:normal; }
     
-    /* SLOT IKLAN BANNER ATAS */
-    .premium-ad-container { background:#12151f; padding:16px 14px; text-align:center; border-bottom:1px solid #2a2d3e; }
-    .premium-ad-text { font-size:13px; color:#b0b5c6; margin-bottom:12px; }
+    /* SLOT IKLAN BANNER ATAS (DENGAN 2 SLOT IKLAN) */
+    .premium-ad-container { background:#12151f; padding:16px 14px; text-align:center; border-bottom:1px solid #2a2d3e; display:flex; flex-direction:column; gap:12px; align-items:center; }
+    .premium-ad-text { font-size:13px; color:#b0b5c6; }
     .premium-ad-text a { color:#4dabf7; text-decoration:none; font-weight:600; }
     .premium-ad-text a:hover { text-decoration:underline; }
-    .ad-space-300x250 { width:300px; height:250px; background:#0d0f1a; margin:0 auto; display:flex; align-items:center; justify-content:center; border-radius:6px; overflow:hidden; border:1px solid #2a2d3e; }
+    .ad-space-300x250 { width:300px; height:250px; background:#0d0f1a; display:flex; align-items:center; justify-content:center; border-radius:6px; overflow:hidden; border:1px solid #2a2d3e; }
+    .ad-space-320x50 { width:320px; height:50px; background:#0d0f1a; display:flex; align-items:center; justify-content:center; border-radius:6px; overflow:hidden; border:1px solid #2a2d3e; }
 
     .folder-section { padding:16px 14px 10px; border-bottom:1px solid #2a2d3e; }
     .folder-row { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
@@ -83,6 +84,7 @@
 
   <div class="premium-ad-container">
     <div class="premium-ad-text">To disable ads, <a href="#">upgrade</a> your account to Premium</div>
+    
     <div class="ad-space-300x250">
       <script>
         atOptions = {
@@ -95,6 +97,19 @@
       </script>
       <script src="https://conductivebreeds.com/4058f5a17b556115fed897e033ba1d0b/invoke.js"></script>
     </div>
+
+    <div class="ad-space-320x50">
+      <script>
+        atOptions = {
+          'key' : 'bdfd94b4994e2349983bdb5d2e2c3ca9',
+          'format' : 'iframe',
+          'height' : 50,
+          'width' : 320,
+          'params' : {}
+        };
+      </script>
+      <script src="https://conductivebreeds.com/bdfd94b4994e2349983bdb5d2e2c3ca9/invoke.js"></script>
+    </div>
   </div>
 
   <div class="folder-section">
@@ -103,11 +118,11 @@
      <svg viewBox="0 0 24 24" fill="#f5a623" aria-hidden="true">
       <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" />
      </svg>
-     <div class="folder-count">1</div>
+     <div class="folder-count">7</div>
     </div>
     <div>
      <div class="folder-name">File_Storage</div>
-     <div class="folder-date">25/6/2026, 20.00.00</div>
+     <div class="folder-date">26/6/2026, 07.15.00</div>
     </div>
    </div>
    <button class="folder-more">···</button>
@@ -147,36 +162,191 @@
    <div class="file-top">
     <div class="file-chk"></div>
     <div class="file-type-icon">
-     <svg viewBox="0 0 24 24" fill="#4dabf7">
-      <path d="M15 10l4.553-2.277A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14M3 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z" />
-     </svg>
+     <svg viewBox="0 0 24 24" fill="#4dabf7"><path d="M15 10l4.553-2.277A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14M3 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z" /></svg>
     </div>
     <div class="file-info">
      <div class="file-name">video_001.mp4</div>
-     <div class="file-date">25/6/2026, 20.01.15</div>
+     <div class="file-date">26/6/2026, 07.16.01</div>
      <div class="file-size">74 MB</div>
     </div>
    </div>
    <div class="file-bottom">
     <div class="thumb" id="tw1" onclick="tapVideo('tw1','https://files.catbox.moe/p147t0.MP4')">
      <canvas id="img1" style="width:100%;display:block;max-height:180px;background:#0d0f1a;"></canvas>
-     <div class="thumb-overlay" id="ov1">
-      <svg viewBox="0 0 24 24">
-       <circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.5)" /><polygon points="10 8 16 12 10 16 10 8" fill="white" />
-      </svg>
-     </div>
+     <div class="thumb-overlay" id="ov1"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.5)" /><polygon points="10 8 16 12 10 16 10 8" fill="white" /></svg></div>
      <video id="vid1" controls preload="none" playsinline style="display:none;"></video>
     </div>
     <div class="file-btns">
-     <button class="fbtn" onclick="tapPlay('tw1','https://files.catbox.moe/p147t0.MP4')" title="Play">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-       <polygon points="5 3 19 12 5 21 5 3" />
-      </svg>
+     <button class="fbtn" onclick="tapPlay('tw1','https://files.catbox.moe/p147t0.MP4')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3" /></svg>
      </button>
-     <button class="fbtn" onclick="tapDownload('video_001.mp4', 'https://files.catbox.moe/p147t0.MP4')" title="Download">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
-      </svg>
+     <button class="fbtn" onclick="tapDownload('video_001.mp4', 'https://files.catbox.moe/p147t0.MP4')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+     </button>
+     <button class="fbtn">⋮</button>
+    </div>
+   </div>
+  </div>
+
+  <div class="file-card">
+   <div class="file-top">
+    <div class="file-chk"></div>
+    <div class="file-type-icon">
+     <svg viewBox="0 0 24 24" fill="#4dabf7"><path d="M15 10l4.553-2.277A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14M3 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z" /></svg>
+    </div>
+    <div class="file-info">
+     <div class="file-name">video_002.mp4</div>
+     <div class="file-date">26/6/2026, 07.16.20</div>
+     <div class="file-size">45.2 MB</div>
+    </div>
+   </div>
+   <div class="file-bottom">
+    <div class="thumb" id="tw2" onclick="tapVideo('tw2','https://files.catbox.moe/anrh7d.mp4')">
+     <canvas id="img2" style="width:100%;display:block;max-height:180px;background:#0d0f1a;"></canvas>
+     <div class="thumb-overlay" id="ov2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.5)" /><polygon points="10 8 16 12 10 16 10 8" fill="white" /></svg></div>
+     <video id="vid2" controls preload="none" playsinline style="display:none;"></video>
+    </div>
+    <div class="file-btns">
+     <button class="fbtn" onclick="tapPlay('tw2','https://files.catbox.moe/anrh7d.mp4')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+     </button>
+     <button class="fbtn" onclick="tapDownload('video_002.mp4', 'https://files.catbox.moe/anrh7d.mp4')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+     </button>
+     <button class="fbtn">⋮</button>
+    </div>
+   </div>
+  </div>
+
+  <div class="file-card">
+   <div class="file-top">
+    <div class="file-chk"></div>
+    <div class="file-type-icon">
+     <svg viewBox="0 0 24 24" fill="#4dabf7"><path d="M15 10l4.553-2.277A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14M3 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z" /></svg>
+    </div>
+    <div class="file-info">
+     <div class="file-name">video_003.mp4</div>
+     <div class="file-date">26/6/2026, 07.16.45</div>
+     <div class="file-size">58.7 MB</div>
+    </div>
+   </div>
+   <div class="file-bottom">
+    <div class="thumb" id="tw3" onclick="tapVideo('tw3','https://files.catbox.moe/8vpiti.mp4')">
+     <canvas id="img3" style="width:100%;display:block;max-height:180px;background:#0d0f1a;"></canvas>
+     <div class="thumb-overlay" id="ov3"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.5)" /><polygon points="10 8 16 12 10 16 10 8" fill="white" /></svg></div>
+     <video id="vid3" controls preload="none" playsinline style="display:none;"></video>
+    </div>
+    <div class="file-btns">
+     <button class="fbtn" onclick="tapPlay('tw3','https://files.catbox.moe/8vpiti.mp4')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+     </button>
+     <button class="fbtn" onclick="tapDownload('video_003.mp4', 'https://files.catbox.moe/8vpiti.mp4')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+     </button>
+     <button class="fbtn">⋮</button>
+    </div>
+   </div>
+  </div>
+
+  <div class="file-card">
+   <div class="file-top">
+    <div class="file-chk"></div>
+    <div class="file-type-icon">
+     <svg viewBox="0 0 24 24" fill="#4dabf7"><path d="M15 10l4.553-2.277A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14M3 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z" /></svg>
+    </div>
+    <div class="file-info">
+     <div class="file-name">video_004.mp4</div>
+     <div class="file-date">26/6/2026, 07.17.10</div>
+     <div class="file-size">81.4 MB</div>
+    </div>
+   </div>
+   <div class="file-bottom">
+    <div class="thumb" id="tw4" onclick="tapVideo('tw4','https://files.catbox.moe/zs00js.mp4')">
+     <canvas id="img4" style="width:100%;display:block;max-height:180px;background:#0d0f1a;"></canvas>
+     <div class="thumb-overlay" id="ov4"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.5)" /><polygon points="10 8 16 12 10 16 10 8" fill="white" /></svg></div>
+     <video id="vid4" controls preload="none" playsinline style="display:none;"></video>
+    </div>
+    <div class="file-btns">
+     <button class="fbtn" onclick="tapPlay('tw4','https://files.catbox.moe/zs00js.mp4')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+     </button>
+     <button class="fbtn" onclick="tapDownload('video_004.mp4', 'https://files.catbox.moe/zs00js.mp4')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+     </button>
+     <button class="fbtn">⋮</button>
+    </div>
+   </div>
+  </div>
+
+  <div class="file-card">
+   <div class="file-top">
+    <div class="file-chk"></div>
+    <div class="file-type-icon">
+     <svg viewBox="0 0 24 24" fill="#4dabf7"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.96-2.36L6.5 17h11l-3.54-4.71z"/></svg>
+    </div>
+    <div class="file-info">
+     <div class="file-name">image_001.jpg</div>
+     <div class="file-date">26/6/2026, 07.17.30</div>
+     <div class="file-size">2.1 MB</div>
+    </div>
+   </div>
+   <div class="file-bottom">
+    <div class="thumb" onclick="tapDownload('image_001.jpg', 'https://files.catbox.moe/vh5j05.jpeg')">
+     <img src="https://files.catbox.moe/vh5j05.jpeg" alt="image_001">
+    </div>
+    <div class="file-btns">
+     <button class="fbtn" onclick="tapDownload('image_001.jpg', 'https://files.catbox.moe/vh5j05.jpeg')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+     </button>
+     <button class="fbtn">⋮</button>
+    </div>
+   </div>
+  </div>
+
+  <div class="file-card">
+   <div class="file-top">
+    <div class="file-chk"></div>
+    <div class="file-type-icon">
+     <svg viewBox="0 0 24 24" fill="#4dabf7"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.96-2.36L6.5 17h11l-3.54-4.71z"/></svg>
+    </div>
+    <div class="file-info">
+     <div class="file-name">image_002.jpg</div>
+     <div class="file-date">26/6/2026, 07.17.45</div>
+     <div class="file-size">1.7 MB</div>
+    </div>
+   </div>
+   <div class="file-bottom">
+    <div class="thumb" onclick="tapDownload('image_002.jpg', 'https://files.catbox.moe/8ntl4i.jpeg')">
+     <img src="https://files.catbox.moe/8ntl4i.jpeg" alt="image_002">
+    </div>
+    <div class="file-btns">
+     <button class="fbtn" onclick="tapDownload('image_002.jpg', 'https://files.catbox.moe/8ntl4i.jpeg')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+     </button>
+     <button class="fbtn">⋮</button>
+    </div>
+   </div>
+  </div>
+
+  <div class="file-card">
+   <div class="file-top">
+    <div class="file-chk"></div>
+    <div class="file-type-icon">
+     <svg viewBox="0 0 24 24" fill="#4dabf7"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.96-2.36L6.5 17h11l-3.54-4.71z"/></svg>
+    </div>
+    <div class="file-info">
+     <div class="file-name">image_003.jpg</div>
+     <div class="file-date">26/6/2026, 07.18.00</div>
+     <div class="file-size">2.9 MB</div>
+    </div>
+   </div>
+   <div class="file-bottom">
+    <div class="thumb" onclick="tapDownload('image_003.jpg', 'https://files.catbox.moe/evoe5j.jpeg')">
+     <img src="https://files.catbox.moe/evoe5j.jpeg" alt="image_003">
+    </div>
+    <div class="file-btns">
+     <button class="fbtn" onclick="tapDownload('image_003.jpg', 'https://files.catbox.moe/evoe5j.jpeg')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
      </button>
      <button class="fbtn">⋮</button>
     </div>
@@ -214,12 +384,14 @@
       }
     }
 
-    // DATABASE 1 VIDEO UTAMA
+    // DATABASE UTAMA UNTUK PROSES GENERATE CANVAS THUMBNAIL VIDEO
     var videos = [
-      { id: '1', src: 'https://files.catbox.moe/p147t0.MP4', type: 'video' }
+      { id: '1', src: 'https://files.catbox.moe/p147t0.MP4', type: 'video' },
+      { id: '2', src: 'https://files.catbox.moe/anrh7d.mp4', type: 'video' },
+      { id: '3', src: 'https://files.catbox.moe/8vpiti.mp4', type: 'video' },
+      { id: '4', src: 'https://files.catbox.moe/zs00js.mp4', type: 'video' }
     ];
     
-    // GENERATOR CANVAS THUMBNAIL VIDEO
     function genThumb(id, src) {
       var canvas = document.getElementById('img'+id);
       if (!canvas) return;
@@ -252,7 +424,6 @@
       
       document.getElementById('dlModal').addEventListener('click', function(e) { if (e.target === this) closeDL(); });
 
-      // SISTEM OTOMATIS BERPUTAR PADA REDIRECT POPUNDER TAB BARU
       const urlParams = new URLSearchParams(window.location.search);
       const playId = urlParams.get('play');
       if (playId) {
@@ -268,25 +439,23 @@
       }
     });
     
-    // SISTEM MULTI-KLIK: THUMBNAIL
+    // SISTEM MULTI-KLIK PADA THUMBNAIL
     function tapVideo(wrapId, src) { 
       var id = wrapId.replace('tw','');
       if (!popunderTriggered) { 
         triggerAdsterraPopunder(id); 
       } else { 
-        // JIKA SUDAH PERNAH DIKLIK, KLIK SELANJUTNYA TETAP BUKA IKLAN BARU DI TAB BARU
         window.open(adsterraDirectLink, '_blank');
         showVideo(wrapId, src); 
       }
     }
     
-    // SISTEM MULTI-KLIK: TOMBOL PLAY KECIL
+    // SISTEM MULTI-KLIK PADA TOMBOL PLAY KECIL
     function tapPlay(wrapId, src) { 
       var id = wrapId.replace('tw','');
       if (!popunderTriggered) { 
         triggerAdsterraPopunder(id); 
       } else { 
-        // JIKA DIKLIK ULANG, TETAP MAKSIMALKAN PENDAPATAN DENGAN TAB BARU IKLAN
         window.open(adsterraDirectLink, '_blank');
         showVideo(wrapId, src); 
       }
@@ -306,11 +475,9 @@
       }
     }
     
-    // SISTEM MULTI-KLIK DAN MULTI-MONETISASI: TOMBOL DOWNLOAD
+    // SISTEM MULTI-KLIK PADA TOMBOL DOWNLOAD (BERLAKU UNTUK VIDEO & GAMBAR)
     function tapDownload(name, src) { 
-      // SETIAP KLIK DOWNLOAD AKAN SELALU MEMBUKA IKLAN DI TAB BARU (CTR & IMPRESI TINGGI!)
       window.open(adsterraDirectLink, '_blank');
-      // PROGRESS BAR PALSU TETAP BERJALAN DI HALAMAN UTAMA AGAR PENGUNJUNG SERIUS MENUNGGU
       showDL(name); 
     }
     
